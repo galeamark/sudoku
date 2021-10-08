@@ -1,7 +1,8 @@
 import { Cell } from './cell';
+import { MeasurableActions } from './measurable-actions';
 import { SudokuRow } from './sudoku-row';
 
-export abstract class AbstractSudokuClass {
+export abstract class AbstractSudokuClass extends MeasurableActions {
 	public rowCount: number;
 	public columnCount: number;
 	public abstract rowPerBox: number;
@@ -14,6 +15,7 @@ export abstract class AbstractSudokuClass {
 	public abstract rules: ((cell: Cell) => boolean)[];
 
 	constructor(rowCount: number, columnCount: number) {
+		super();
 		this.rowCount = rowCount;
 		this.columnCount = columnCount;
 		this.maxValue = Math.sqrt(this.rowCount * this.columnCount);

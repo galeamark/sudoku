@@ -1,5 +1,6 @@
 import { AbstractSudokuClass } from './abstract-sudoku-class';
 import { Cell } from './cell';
+import { MeasurableActions } from './measurable-actions';
 
 export abstract class AbstractSixBySixSudokuClass extends AbstractSudokuClass {
 	rowPerBox: number;

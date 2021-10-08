@@ -43,4 +43,5 @@ test('Sukano Constructor', () => {
 7|5|1|3|9|4|2|6|8\n\
 8|9|4|5|2|6|1|7|3',
 	);
+	sudoku.getActionsSummary();
 });

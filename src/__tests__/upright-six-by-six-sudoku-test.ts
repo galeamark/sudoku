@@ -30,4 +30,6 @@ test('Sukano Constructor', () => {
 	expect(sudoku.get(3, 2).value).toBe(6);
 	expect(sudoku.get(4, 2).value).toBe(2);
 	expect(sudoku.get(4, 5).value).toBe(5);
+
+	sudoku.getActionsSummary();
 });
