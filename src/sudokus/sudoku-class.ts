@@ -21,20 +21,32 @@ export class SudokuClass extends AbstractSudokuClass {
 
 		this.rules = [
 			(cell) =>
-				this.measureAction('row uniqueness', () => this._cells.filter((c) => c.row === cell.row && c.column !== cell.column && c.value === cell.value).length ===
-					0), // row uniqueness
+				this.measureAction(
+					'row uniqueness',
+					() =>
+						this._cells.filter((c) => c.row === cell.row && c.column !== cell.column && c.value === cell.value)
+							.length === 0,
+				), // row uniqueness
 			(cell) =>
-				this.measureAction('column uniqueness', () => this._cells.filter((c) => c.column === cell.column && c.row !== cell.row && c.value === cell.value).length ===
-					0), // column uniqueness
+				this.measureAction(
+					'column uniqueness',
+					() =>
+						this._cells.filter((c) => c.column === cell.column && c.row !== cell.row && c.value === cell.value)
+							.length === 0,
+				), // column uniqueness
 			(cell) =>
-				this.measureAction('box uniqueness', () => this._cells.filter(
-					(c) =>
-						c.row !== cell.row &&
-						c.column !== cell.column &&
-						c.value === cell.value &&
-						Math.ceil(c.column / this.columnSeparations) === Math.ceil(cell.column / this.columnSeparations) &&
-						Math.ceil(c.row / this.rowSeparations) === Math.ceil(cell.row / this.rowSeparations),
-				).length === 0), // box uniqueness
+				this.measureAction(
+					'box uniqueness',
+					() =>
+						this._cells.filter(
+							(c) =>
+								c.row !== cell.row &&
+								c.column !== cell.column &&
+								c.value === cell.value &&
+								Math.ceil(c.column / this.columnSeparations) === Math.ceil(cell.column / this.columnSeparations) &&
+								Math.ceil(c.row / this.rowSeparations) === Math.ceil(cell.row / this.rowSeparations),
+						).length === 0,
+				), // box uniqueness
 		];
 	}
 }

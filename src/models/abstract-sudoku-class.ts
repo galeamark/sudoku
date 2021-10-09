@@ -52,7 +52,7 @@ export abstract class AbstractSudokuClass extends MeasurableActions {
 	private overMax: (entry: any) => boolean = (value) => value > this.maxValue;
 
 	private validate(cell: Cell): boolean {
-		for (let rule of this.rules) {
+		for (const rule of this.rules) {
 			if (!rule(cell)) {
 				return false;
 			}

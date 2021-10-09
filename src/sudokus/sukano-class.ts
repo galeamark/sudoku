@@ -16,32 +16,36 @@ export class SukanoClass extends SudokuClass {
 		this._translatedColumnRestrictions = this.translateDefinitions(this._columnRestrictions);
 		this._translatedRowRestrictions = this.translateDefinitions(this._rowRestrictions);
 
-		this.rules.push((cell) => this.measureAction('column rules', () => {
-			const columnRestriction: string[] = this._translatedColumnRestrictions[cell.column - 1][cell.row - 1];
-			const filledColumn = this._cells
-				.filter((c) => c.column === cell.column && c.row <= cell.row)
-				.map((c) => c.value)
-				.join('');
-			for (const columnRestrictionItem of columnRestriction) {
-				if (columnRestrictionItem === filledColumn) {
-					return true;
+		this.rules.push((cell) =>
+			this.measureAction('column rules', () => {
+				const columnRestriction: string[] = this._translatedColumnRestrictions[cell.column - 1][cell.row - 1];
+				const filledColumn = this._cells
+					.filter((c) => c.column === cell.column && c.row <= cell.row)
+					.map((c) => c.value)
+					.join('');
+				for (const columnRestrictionItem of columnRestriction) {
+					if (columnRestrictionItem === filledColumn) {
+						return true;
+					}
 				}
-			}
-			return false;
-		}));
-		this.rules.push((cell) => this.measureAction('row rules', () => {
-			const rowRestriction: string[] = this._translatedRowRestrictions[cell.row - 1][cell.column - 1];
-			const filledRow = this._cells
-				.filter((c) => c.row === cell.row && c.column <= cell.column)
-				.map((c) => c.value)
-				.join('');
-			for (const rowRestrictionItem of rowRestriction) {
-				if (rowRestrictionItem === filledRow) {
-					return true;
+				return false;
+			}),
+		);
+		this.rules.push((cell) =>
+			this.measureAction('row rules', () => {
+				const rowRestriction: string[] = this._translatedRowRestrictions[cell.row - 1][cell.column - 1];
+				const filledRow = this._cells
+					.filter((c) => c.row === cell.row && c.column <= cell.column)
+					.map((c) => c.value)
+					.join('');
+				for (const rowRestrictionItem of rowRestriction) {
+					if (rowRestrictionItem === filledRow) {
+						return true;
+					}
 				}
-			}
-			return false;
-		}));
+				return false;
+			}),
+		);
 	}
 
 	public solve(): boolean | undefined {
