@@ -45,3 +45,32 @@ test('Sukano Constructor', () => {
 	);
 	sudoku.getActionsSummary();
 });
+
+test('Sukano Constructor', () => {
+	var sudoku = new SukanoClass(
+		[
+			'15|12|18',
+			'35|3*|7*',
+			'27|11|7',
+			'19|26',
+			'2*|43',
+			'4*|41',
+			'39|6*',
+			'16|18|11',
+			'9|36',
+		],
+		[
+			'26|19',
+			'36|5|4*',
+			'4*|32|9*',
+			'35|10',
+			'15|15|15',
+			'2*|9*|8|26',
+			'10|15|6|14',
+			'4|8|4*|29',
+			'32|12|1*',
+	],
+	);
+	sudoku.solve();
+	console.log(sudoku.print());
+});
